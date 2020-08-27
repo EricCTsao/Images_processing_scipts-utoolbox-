@@ -29,17 +29,17 @@ create_folder(dst_dir)
 data = []
 for single_file in files:
     #read image using the filename list
-    Image = imageio.volread(single_file)
+    image = imageio.volread(single_file)
     
     #flipped image in x-direction
-    Image_flip = Image[...,::-1]
+    image_flip = image[...,::-1]
     
     #flipped image name
     filename_split = single_file.split("\\")
     path = os.path.join(dst_dir, f"{filename_split[-1]}.tif")
     
     #save flipped image 
-    future = imageio.volwrite(path, Image_flip)
+    future = imageio.volwrite(path, image_flip)
     data.append(future)
 
     print()
